@@ -1,16 +1,43 @@
 [package]
-name = "screeps-starter-rust"
+name = "screeps-arena-starter-rust"
 version = "0.0.0"
 authors = []
 edition = "2018"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
-stdweb = "0.4"
+js-sys = "0.3"
 log = "0.4"
 fern = "0.6"
-screeps-game-api = "0.9"
+# crate not yet published! TODO remove before merge
+screeps-arena-game-api = { git = "https://github.com/rustyscreeps/screeps-arena-game-api.git", branch = "arena" }
+# screeps-arena-game-api = "0.1"
+# screeps-arena-game-api = { path = "../screeps-arena-game-api" }
+wasm-bindgen = "0.2"
+web-sys = { version = "0.3", features = ["console"] }
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.6", optional = true }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3"
 
 [profile.release]
 panic = "abort"
-opt-level = "s"
+opt-level = 3
 lto = true
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-O4"]
+
+[features]
+default = []
+
+arena-capture-the-flag = ["screeps-arena-game-api/arena-capture-the-flag"]
+arena-spawn-and-swamp = ["screeps-arena-game-api/arena-spawn-and-swamp"]
+arena-collect-and-control = ["screeps-arena-game-api/arena-collect-and-control"]
