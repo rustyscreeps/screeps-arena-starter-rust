@@ -1,0 +1,40 @@
+# Compiled source #
+###################
+target
+
+# Build Files #
+###############
+Cargo.lock
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Project files #
+#################
+.classpath
+.externalToolBuilders
+.idea
+.project
+.settings
+nbproject
+*.iml
+*.ipr
+*.iws
+*.sublime-project
+*.sublime-workspace
+screeps.toml
