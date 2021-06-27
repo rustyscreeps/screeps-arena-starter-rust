@@ -16,7 +16,7 @@ fn setup() {
 // to use a reserved name as a function name, use `js_name`:
 #[wasm_bindgen(js_name = loop)]
 pub fn tick() {
-    let tick = game::utils::get_time();
+    let tick = game::utils::get_ticks();
 
     if tick == 1 {
         setup();

@@ -6,7 +6,6 @@ build_mode = "arena"
 [ctf]
 destination = "/Users/username/ScreepsArena"
 prune = true
-include_files = ["pkg"]
 branch = "alpha-capture_the_flag"
   [ctf.build]
   extra_options = ["--features=arena-capture-the-flag"]
@@ -14,7 +13,6 @@ branch = "alpha-capture_the_flag"
 [swamp]
 destination = "/Users/username/ScreepsArena"
 prune = true
-include_files = ["pkg"]
 branch = "alpha-spawn_and_swamp"
   [swamp.build]
   extra_options = ["--features=arena-spawn-and-swamp"]
@@ -22,7 +20,6 @@ branch = "alpha-spawn_and_swamp"
 [collect]
 destination = "/Users/username/ScreepsArena"
 prune = true
-include_files = ["pkg"]
 branch = "alpha-collect_and_control"
   [collect.build]
   extra_options = ["--features=arena-collect-and-control"]
