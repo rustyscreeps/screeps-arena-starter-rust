@@ -1,9 +1,9 @@
-use std::cell::RefCell;
-use std::collections::HashMap;
-
-use js_sys::{Array, JsString, Object};
 use log::*;
-use screeps_arena::{prelude::*, game, objects::*, constants::Part};
+use screeps_arena::{
+    prelude::*,
+    game,
+    constants::{prototypes, Part},
+};
 use wasm_bindgen::prelude::*;
 
 mod logging;
@@ -31,9 +31,9 @@ pub fn tick() {
     #[cfg(feature = "arena-spawn-and-swamp")]
     {
         let mut enemy_spawn = None;
-        let spawn_array = game::utils::get_objects_by_prototype(&STRUCTURE_SPAWN_PROTOTYPE);
-        warn!("spawns {}", spawn_array.length());
-        for spawn in spawn_array.iter().map(StructureSpawn::from) {
+        let spawns = game::utils::get_objects_by_prototype(prototypes::STRUCTURE_SPAWN);
+        warn!("spawns {}", spawns.len());
+        for spawn in spawns {
             if spawn.my().unwrap_or(false) {
                 spawn.spawn_creep(&[Part::Move, Part::Attack]);
             } else {
@@ -41,9 +41,9 @@ pub fn tick() {
             }
         }
 
-        let creep_array = game::utils::get_objects_by_prototype(&CREEP_PROTOTYPE);
-        warn!("creeps {}", creep_array.length());
-        for creep in creep_array.iter().map(Creep::from) {
+        let creeps = game::utils::get_objects_by_prototype(prototypes::CREEP);
+        warn!("creeps {}", creeps.len());
+        for creep in creeps {
             if creep.my() {
                 match &enemy_spawn {
                     Some(t) => {
