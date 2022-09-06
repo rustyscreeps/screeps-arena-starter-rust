@@ -1,8 +1,8 @@
 use log::*;
 use screeps_arena::{
-    prelude::*,
-    game,
     constants::{prototypes, Part},
+    game,
+    prelude::*,
 };
 use wasm_bindgen::prelude::*;
 
@@ -55,5 +55,4 @@ pub fn tick() {
             }
         }
     }
-    
 }
