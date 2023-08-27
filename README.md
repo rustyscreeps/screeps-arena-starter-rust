@@ -28,7 +28,7 @@ cargo install cargo-screeps
 
 # clone:
 git clone https://github.com/rustyscreeps/screeps-arena-starter-rust.git
-cd screeps-starter-rust
+cd screeps-arena-starter-rust
 
 # configure with the path to your arena code directory:
 cp example-screeps.toml screeps.toml
