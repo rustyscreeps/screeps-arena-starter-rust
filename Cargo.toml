@@ -11,7 +11,6 @@ crate-type = ["cdylib", "rlib"]
 js-sys = "0.3"
 log = "0.4"
 fern = "0.6"
-# crate not yet published! TODO remove before merge
 screeps-arena-game-api = { git = "https://github.com/rustyscreeps/screeps-arena-game-api.git" }
 # screeps-arena-game-api = "0.1"
 # screeps-arena-game-api = { path = "../screeps-arena-game-api" }
@@ -22,7 +21,7 @@ web-sys = { version = "0.3", features = ["console"] }
 # logging them with `console.error`. This is great for development, but requires
 # all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
 # code size when deploying.
-console_error_panic_hook = { version = "0.1.6", optional = true }
+# console_error_panic_hook = { version = "0.1.6", optional = true }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3"
@@ -31,9 +30,13 @@ wasm-bindgen-test = "0.3"
 panic = "abort"
 opt-level = 3
 lto = true
+debug = true
 
+# wasm pack has a significant impact on binary size but adds some seconds to the build
+# so it can be disabled
 [package.metadata.wasm-pack.profile.release]
-wasm-opt = ["-O4"]
+wasm-opt = ["-O4", "-g"]
+#wasm-opt = false
 
 [features]
 default = []
