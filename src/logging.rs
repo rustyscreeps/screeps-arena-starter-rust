@@ -1,5 +1,5 @@
 use crate::wasm_bindgen;
-use core::panic::PanicInfo;
+use std::panic::PanicHookInfo;
 use js_sys::JsString;
 use log::error;
 pub use log::LevelFilter::*;
@@ -36,7 +36,7 @@ pub fn setup_logging(verbosity: log::LevelFilter) {
     panic::set_hook(Box::new(panic_hook));
 }
 
-fn panic_hook(info: &PanicInfo) {
+fn panic_hook(info: &PanicHookInfo) {
     // import JS Error API to get backtrace info (backtraces don't work in wasm)
     // Node 8 does support this API: https://nodejs.org/docs/latest-v8.x/api/errors.html#errors_error_stack
 
